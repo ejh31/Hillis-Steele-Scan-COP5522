@@ -1,18 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void init_array(int *arr, int size)
+void init_zero_array(int *arr, int size)
 {
     for (int i = 0; i < size; i++)
         arr[i] = 0;
 }
 
-void print_array_elements(int *arr, int size)
+void init_input_array(int *arr, int size)
 {
-    printf("[");
     for (int i = 0; i < size; i++)
-        printf(" %i ", arr[i]);
-    printf("]");
+        arr[i] = i + 1;
+}
+
+void print_array_elements(char *label, int *arr, int size)
+{
+    printf("%s \t [", label);
+    for (int i = 0; i < size; i++)
+        printf("%3i", arr[i]);
+    printf("  ]");
 }
 
 void compute_inclusive_scan(int *input, int *output, int size)
@@ -27,20 +33,25 @@ void compute_inclusive_scan(int *input, int *output, int size)
 
 int main(int argc, char **argv)
 {
+    if (argc != 2)
+    {
+        printf("ERROR\n");
+        printf("USAGE: ./main <number_input_elements>");
+        return 1;
+    }
 
-    int input[] = {1, 2, 3};
-    int size = sizeof(input) / sizeof(int);
-    int *output = malloc(sizeof(input) * sizeof(int));
+    int size = atoi(argv[1]);
+    int *input = malloc(sizeof(int) * size);
+    int *output = malloc(sizeof(int) * size);
 
-    init_array(output, size);
+    init_input_array(input, size);
+    init_zero_array(output, size);
 
     compute_inclusive_scan(input, output, size);
 
-    printf("Input Array: \t");
-    print_array_elements(input, size);
+    print_array_elements("Input Array", input, size);
     printf("\n");
-    printf("Output Array: \t");
-    print_array_elements(output, size);
+    print_array_elements("Output Array", output, size);
 
     free(output);
 
