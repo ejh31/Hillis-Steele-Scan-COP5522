@@ -18,7 +18,7 @@ void print_array_elements(char *label, int *arr, int size)
     printf("%s \t [", label);
     for (int i = 0; i < size; i++)
         printf("%3i", arr[i]);
-    printf("  ]");
+    printf("  ]\n");
 }
 
 void compute_inclusive_scan(int *input, int *output, int size)
@@ -50,9 +50,9 @@ int main(int argc, char **argv)
     compute_inclusive_scan(input, output, size);
 
     print_array_elements("Input Array", input, size);
-    printf("\n");
     print_array_elements("Output Array", output, size);
 
+    free(input);
     free(output);
 
     return 0;
