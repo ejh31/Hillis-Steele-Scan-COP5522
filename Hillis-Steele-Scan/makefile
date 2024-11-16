@@ -1,4 +1,4 @@
-CC=gcc
+CC=mpicc
 CFLAG= -Wall -I. -O2
 
 TARGETS=main # add your target here

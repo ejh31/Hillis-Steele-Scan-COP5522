@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     if (argc != 2)
     {
         printf("ERROR\n");
-        printf("USAGE: ./main <number_input_elements>");
+        printf("USAGE: ./main <number_input_elements>\n");
         return 1;
     }
 
